@@ -1,8 +1,13 @@
-let numero = prompt("Ingresa un numero");
+let texto = prompt("Ingresa una palabra");
+let acumulador="";
 
-if (numero%2==0){
-    alert("Numero par");
+while(texto!="esc"){
+    alert(texto);
+
+    acumulador +=texto + " ";
+
+    texto=prompt("Ingresa otra palabra");
 }
-else {
-    alert("Numero impar")
-}
+
+
+alert(acumulador);
