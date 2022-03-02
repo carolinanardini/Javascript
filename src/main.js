@@ -11,3 +11,4 @@ while(texto!="esc"){
 
 
 alert(acumulador);
+document.write(acumulador);
