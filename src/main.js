@@ -15,7 +15,6 @@
 // document.write(acumulador);
 
 
-// FUNCIONES
 
 function validarStock(stockProducto,cantidadPedida){
     if(stockProducto>cantidadPedida){
@@ -38,3 +37,7 @@ function agregarAlCarrito(nombreProducto,precioProducto=0,stockProducto,cantidad
 
 }
 
+function valorTotal(valorProducto1, valorProducto2){
+    let resultado = valorProducto1+valorProducto2;
+    console.log(resultado)
+}
