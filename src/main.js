@@ -18,26 +18,45 @@
 
 function validarStock(stockProducto,cantidadPedida){
     if(stockProducto>cantidadPedida){
-        return true;
+        console.log("Hay stock");
     }
     else{
-       return false;
+       console.log("No hay stock");
     }
 }
 
-function agregarAlCarrito(nombreProducto,precioProducto=0,stockProducto,cantidadPedida){
-    const tieneStock=validarStock(stockProducto,cantidadPedida);
-
-    if(tieneStock){
-        console.log(`agregaste al carrito el ${nombreProducto} a $ ${precioProducto}`)
-    }    
-    else{
-        console.log("No tenemos más producto");
-    }
-
-}
 
 function valorTotal(valorProducto1, valorProducto2){
     let resultado = valorProducto1+valorProducto2;
     console.log(resultado)
+}
+
+
+const carrito=[];
+
+
+const producto= new product("botas", 700,"zapatos");
+const producto2= new product("vestido", 500,"ropa");
+const producto3= new product("remera", 200,"ropa");
+
+
+function product (titulo,precio,categoria){
+    this.titulo=titulo;
+    this.precio=precio;
+    this.categoria=categoria;
+}
+
+function agregarAlCarrito(elemento){
+    const textoAMostrar = "Agregas al carrito " + elemento.titulo + " a $ " + elemento.precio;
+    carrito.push(elemento);
+    console.log(textoAMostrar);
+    console.log(carrito);
+}
+
+function eliminarDelCarrito(elemento){
+    const textoAMostrar2 = "Eliminaste del carrito " + elemento.titulo ;
+    const indice= carrito.indexOf(elemento);
+    carrito.splice(indice,1);
+    console.log(textoAMostrar2);
+    console.log(carrito);
 }
