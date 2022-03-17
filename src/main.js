@@ -60,3 +60,29 @@ function eliminarDelCarrito(elemento){
     console.log(textoAMostrar2);
     console.log(carrito);
 }
+
+
+
+
+const productos=[
+    {id:1,titulo:"Barra de cereal con chocolate", categoria: "Barras de cereal", precio:200},
+    {id:2,titulo:"Barra de cereal con frutos rojos", categoria: "Barras de cereal", precio:200},
+    {id:3,titulo:"Bolsa de granola con chocolate", categoria: "Granola", precio:575},
+    {id:4,titulo:"Bolsa de granola con frutos rojos", categoria: "Granola", precio:575},
+    {id:5,titulo:"Caja de barras de cereal con chocolate x12", categoria: "Barras de cereal", precio:2000},
+    {id:6,titulo:"Caja de barras de cereal con frutos rojos x12", categoria: "Barras de cereal", precio:2000},
+]
+
+
+// PARA FILTRAR
+let valorFiltrado = prompt("Filtrar productos con precio mayor a (Ingresar numero)")
+const productosDeMayorPrecio = productos.filter((producto) => producto.precio>valorFiltrado);
+console.log(productosDeMayorPrecio);
+
+
+// PARA USAR COMO BUSCADOR
+const valorDelBuscador ="Barra de cereal con chocolate"
+const productoEncontrado = productos.find(
+    (producto) => producto.titulo.toUpperCase().trim() === valorDelBuscador.toUpperCase().trim());
+
+    console.log(productoEncontrado);
