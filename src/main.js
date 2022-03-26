@@ -83,6 +83,24 @@ console.log(productosDeMayorPrecio);
 // PARA USAR COMO BUSCADOR
 const valorDelBuscador ="Barra de cereal con chocolate"
 const productoEncontrado = productos.find(
-    (producto) => producto.titulo.toUpperCase().trim() === valorDelBuscador.toUpperCase().trim());
+(producto) => producto.titulo.toUpperCase().trim() === valorDelBuscador.toUpperCase().trim());
+console.log(productoEncontrado);
+   
 
-    console.log(productoEncontrado);
+// Acceder a los nodos
+let listadoProductos = document.getElementsByClassName("listadoProductos");
+
+for (const prod of listadoProductos){
+    console.log (prod.innerHTML);
+}
+
+
+// Creando elementos desde objetos
+for (const item of productos){
+    let contenedor = document.createElement("div");
+    contenedor.innerHTML=`<h3>  Producto: ${item.titulo}</h3>
+    <p>  ID: ${item.id}  </p>
+    <b>  Precio: $ ${item.precio}</b>`
+
+    document.body.appendChild(contenedor);
+}
