@@ -13,13 +13,23 @@
         <section class="header__sectionIndex fondoRosaClaro">
           Naturally  
         </section>
-        <nav class="navbar fondoRosa">
-            <a href=""><li class="fontAzulOsucro"> HOME</li></a>
-            <a href=""><li class="fontAzulOsucro"> NOSOTROS</li></a>
-            <a href=""><li class="fontAzulOsucro"> PRODUCTOS</li></a>
-            <a href=""><li class="fontAzulOsucro"> MI CARRITO</li></a>
-            <li> <input type="text" placeholder="Busqueda de productos" id="producto-buscado"> <button onclick="buscarProducto()">Buscar producto</button></li>
+        <nav class="fondoRosa navbar">
+            <ul class="navbar">
+                <a href=""><li class="fontAzulOsucro"> HOME</li></a>
+                <a href=""><li class="fontAzulOsucro"> NOSOTROS</li></a>
+                <a href=""><li class="fontAzulOsucro"> PRODUCTOS</li></a>
+                <a href=""><li class="fontAzulOsucro"> MI CARRITO</li></a>
+                <li> <input type="text" placeholder="Buscar" id="producto-buscado"> <button onclick="buscarProducto()">Buscar producto</button></li>
+            </ul>
 
+            <form class="d-flex marginRight">
+                <button class="btn btn-outline-dark" type="submit">
+                    <i class="bi-cart-fill me-1"></i>
+                    Carrito
+                    <span class="badge bg-dark text-white ms-1 sounded-pill" id="cantidad-prod">0</span>
+                </button>
+            </form>
+            
         </nav>
         <section class="promosIndex fondoAzul">
             <h1 class="tituloPromo">4 por 3</h1>
@@ -53,6 +63,9 @@
         
 
     </main>
+    <form action="#">
+        <input type="text" id="texto-prueba" onchange="tomarValor()"> <input>
+    </form>
 
     <footer>
 

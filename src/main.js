@@ -1,8 +1,3 @@
-// CRISTIAN
-
-const agregarAlCarrito = (producto) => {
-    carrito.push(producto);
-};
 
 const carrito = [];
 
@@ -13,8 +8,20 @@ const productos=[
     {id:3,titulo:"Bolsa de granola con chocolate", categoria: "Granola", precio:575, imagen: 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/01/granolachocolate.jpg', stock:0},
     {id:4,titulo:"Bolsa de granola con frutos rojos", categoria: "Granola", precio:575, imagen: 'https://www.splenda.com/wp-content/themes/bistrotheme/assets/recipe-images/vanilla-cranberry-granola.jpg', stock:15},
     {id:5,titulo:"Caja de barras de cereal con chocolate x12", categoria: "Barras de cereal", precio:2000, imagen: 'https://i.pinimg.com/originals/17/2b/7a/172b7a668ab53cd5fbea48f60e6e151c.png', stock:15},
-    {id:6,titulo:"Caja de barras de cereal con frutos rojos x12", categoria: "Barras de cereal", precio:2000, imagen: 'https://i.pinimg.com/originals/17/2b/7a/172b7a668ab53cd5fbea48f60e6e151c.png', stock:15},
+    {id:6,titulo:"Caja de barras de cereal con frutos rojos x12", categoria: "Barras de cereal", precio:2000, imagen: 'https://i.pinimg.com/originals/17/2b/7a/172b7a668ab53cd5fbea48f60e6e151c.png', stock:1},
 ]
+
+
+const agregarAlCarrito = (idProducto) => {
+    const productoAgregado = productos.find(producto => producto.id === idProducto);
+    document.getElementById("cantidad-prod").innerHTML = carrito.length+1;
+    carrito.push(productoAgregado);
+    productoAgregado.stock--;
+    console.log(productoAgregado.stock);
+    // actualizarStock(productoAgregado) VER COMO HACER PARA QUE SE ACTUALICE EL CARTEL DE EN VENTA Y OUT OF STOCK
+
+};
+
 
 generarCards(productos);
 
@@ -41,7 +48,11 @@ function generarCards(productosAMostrar){
             </div>
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                <div class="text-center">
+                    <button onclick="agregarAlCarrito(${elementoDelArray.id})" class="btn btn-outline-dark mt-auto" href="#">
+                    Agregar al carrito
+                    </button>
+                </div>
             </div>
         </div>
     </div>`;
@@ -66,7 +77,10 @@ function buscarProducto() {
 
 
 
-
+function tomarValor(){
+    const input = document.getElementById("texto-prueba").value;
+    console.log(input);
+}
 
 
 // // DESAFIO 1
