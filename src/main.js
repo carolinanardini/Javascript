@@ -1,25 +1,49 @@
 
-const carrito = [];
 
+document.getElementById("cantidad-prod").innerHTML = carrito.length;
+//  VER COMO SUMAR LA CANTIDAD TOTAL DE PRODUCTOS AL CARRITO, NO SOLO UNO POR PRODUCTO
 
 const productos=[
-    {id:1,titulo:"Barra de cereal con frutos rojos", categoria: "Barras de cereal", precio:200, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-vYOc76x5zdUr40ug65HN9jN4b80Ztt0GXZzNrrf9Q9cVULcSA8TFTH6yOcfvYTniTjI&usqp=CAU', stock: 1},
-    {id:2,titulo:"Barra de cereal con chocolate", categoria: "Barras de cereal", precio:200, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp9xgaV1QL6-SF9JqsR9yYMMtJ75giGvgKcA&usqp=CAU', stock:15},
-    {id:3,titulo:"Bolsa de granola con chocolate", categoria: "Granola", precio:575, imagen: 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/01/granolachocolate.jpg', stock:0},
-    {id:4,titulo:"Bolsa de granola con frutos rojos", categoria: "Granola", precio:575, imagen: 'https://www.splenda.com/wp-content/themes/bistrotheme/assets/recipe-images/vanilla-cranberry-granola.jpg', stock:15},
-    {id:5,titulo:"Caja de barras de cereal con chocolate x12", categoria: "Barras de cereal", precio:2000, imagen: 'https://i.pinimg.com/originals/17/2b/7a/172b7a668ab53cd5fbea48f60e6e151c.png', stock:15},
-    {id:6,titulo:"Caja de barras de cereal con frutos rojos x12", categoria: "Barras de cereal", precio:2000, imagen: 'https://i.pinimg.com/originals/17/2b/7a/172b7a668ab53cd5fbea48f60e6e151c.png', stock:1},
+    {id:1,titulo:"Barra de cereal con frutos rojos", categoria: "Barras de cereal", precio:200, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-vYOc76x5zdUr40ug65HN9jN4b80Ztt0GXZzNrrf9Q9cVULcSA8TFTH6yOcfvYTniTjI&usqp=CAU', stock: 1, preciodescuento:150, cantidad:0},
+    {id:2,titulo:"Barra de cereal con chocolate", categoria: "Barras de cereal", precio:200, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp9xgaV1QL6-SF9JqsR9yYMMtJ75giGvgKcA&usqp=CAU', stock:3, preciodescuento:150, cantidad:0},
+    {id:3,titulo:"Bolsa de granola con chocolate", categoria: "Granola", precio:575, imagen: 'https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/01/granolachocolate.jpg', stock:0, preciodescuento:500, cantidad:0},
+    {id:4,titulo:"Bolsa de granola con frutos rojos", categoria: "Granola", precio:575, imagen: 'https://www.splenda.com/wp-content/themes/bistrotheme/assets/recipe-images/vanilla-cranberry-granola.jpg', stock:10, preciodescuento:500, cantidad:0},
+    {id:5,titulo:"Caja de barras de cereal con chocolate x12", categoria: "Barras de cereal", precio:2000, imagen: 'https://i.pinimg.com/originals/17/2b/7a/172b7a668ab53cd5fbea48f60e6e151c.png', stock:5, preciodescuento:1750, cantidad:0},
+    {id:6,titulo:"Caja de barras de cereal con frutos rojos x12", categoria: "Barras de cereal", precio:2000, imagen: 'https://i.pinimg.com/originals/17/2b/7a/172b7a668ab53cd5fbea48f60e6e151c.png', stock:1, preciodescuento:1750, cantidad:0},
 ]
 
 
 const agregarAlCarrito = (idProducto) => {
+    const valorDeCantidad = document.getElementById(`cantidad-${idProducto}`).value;
+
+// Buscando el producto a agregar
     const productoAgregado = productos.find(producto => producto.id === idProducto);
-    document.getElementById("cantidad-prod").innerHTML = carrito.length+1;
+    productoAgregado.cantidad = valorDeCantidad;
+   
+//  Actualizando el storage del carrito  
     carrito.push(productoAgregado);
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+// Actualizando el html
+    document.getElementById("cantidad-prod").innerHTML=carrito.length;
+
+// Actualizar stock
     productoAgregado.stock--;
     console.log(productoAgregado.stock);
-    // actualizarStock(productoAgregado) VER COMO HACER PARA QUE SE ACTUALICE EL CARTEL DE EN VENTA Y OUT OF STOCK
+    // VER COMO HACER PARA QUE NO TE DEJE AGREGAR PRODUCTOS CUANDO NO ESTAN EN STOCK
 
+    generarCards(productos);
+};
+
+
+
+const irAlProducto = (idProducto) => {
+  
+// Buscando el producto a agregar
+    const productoQueQuiereVer = productos.find(producto => producto.id === idProducto);
+    productoAgregado.cantidad = valorDeCantidad;
+   
+    localStorage.setItem("productoAVer", JSON.stringify(productoQueQuiereVer));
 };
 
 
@@ -42,15 +66,21 @@ function generarCards(productosAMostrar){
                     <!-- Product name-->
                     <h5 class="fw-bolder">${elementoDelArray.titulo}</h5>
                     <!-- Product price-->
-                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                    $${elementoDelArray.precio}
-                </div>
+                    <span class="text-muted text-decoration-line-through">$${elementoDelArray.precio}</span>
+                    $${elementoDelArray.preciodescuento}
+                </div>              
             </div>
-            <!-- Product actions-->
+            <div class="cantidadDeItems">
+            <input type="number" value="1" min="1" id="cantidad-${elementoDelArray.id}" placeholder="cantidad">
+            </div>
+           <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center">
                     <button onclick="agregarAlCarrito(${elementoDelArray.id})" class="btn btn-outline-dark mt-auto" href="#">
                     Agregar al carrito
+                    </button>
+                    <button onclick="irAlProducto(${elementoDelArray.id})" class="btn btn-outline-dark mt-auto" href="#">
+                    Ver Producto
                     </button>
                 </div>
             </div>
@@ -81,6 +111,24 @@ function tomarValor(){
     const input = document.getElementById("texto-prueba").value;
     console.log(input);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // // DESAFIO 1

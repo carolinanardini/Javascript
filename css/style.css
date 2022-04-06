@@ -71,3 +71,12 @@ a{
 .marginRight{
     margin-right: 20px;
 }
+
+.cantidadDeItems{
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.mt-auto {
+    margin-top: 15px;
+}
