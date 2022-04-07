@@ -78,5 +78,5 @@ a{
 }
 
 .mt-auto {
-    margin-top: 15px;
+    margin-top: 15px !important;
 }

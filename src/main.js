@@ -1,6 +1,6 @@
 
 
-document.getElementById("cantidad-prod").innerHTML = carrito.length;
+// document.getElementById("cantidad-prod").innerHTML = carrito.length;
 //  VER COMO SUMAR LA CANTIDAD TOTAL DE PRODUCTOS AL CARRITO, NO SOLO UNO POR PRODUCTO
 
 const productos=[
@@ -41,7 +41,7 @@ const irAlProducto = (idProducto) => {
   
 // Buscando el producto a agregar
     const productoQueQuiereVer = productos.find(producto => producto.id === idProducto);
-    productoAgregado.cantidad = valorDeCantidad;
+    // productoAgregado.cantidad = valorDeCantidad;
    
     localStorage.setItem("productoAVer", JSON.stringify(productoQueQuiereVer));
 };
