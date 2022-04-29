@@ -1,8 +1,4 @@
 
-
-// document.getElementById("cantidad-prod").innerHTML = carrito.length;
-//  VER COMO SUMAR LA CANTIDAD TOTAL DE PRODUCTOS AL CARRITO, NO SOLO UNO POR PRODUCTO
-
 const productos=[
     {id:1,titulo:"Barra de cereal con frutos rojos", categoria: "Barras de cereal", precio:200, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-vYOc76x5zdUr40ug65HN9jN4b80Ztt0GXZzNrrf9Q9cVULcSA8TFTH6yOcfvYTniTjI&usqp=CAU', stock: 1, preciodescuento:150, cantidad:0},
     {id:2,titulo:"Barra de cereal con chocolate", categoria: "Barras de cereal", precio:200, imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp9xgaV1QL6-SF9JqsR9yYMMtJ75giGvgKcA&usqp=CAU', stock:3, preciodescuento:150, cantidad:0},
@@ -27,6 +23,14 @@ const agregarAlCarrito = (idProducto) => {
 // Actualizando el html
     document.getElementById("cantidad-prod").innerHTML=carrito.length;
 
+// Mensaje alert
+    swal({
+        title: `Producto agregado!`,
+        text: `Agregaste ${productoAgregado.titulo} al carrito`,
+        icon: `success`,
+        button: `Seguir comprando`,
+    });
+
 // Actualizar stock
     productoAgregado.stock--;
     console.log(productoAgregado.stock);
@@ -39,7 +43,7 @@ const agregarAlCarrito = (idProducto) => {
 
 const irAlProducto = (idProducto) => {
   
-// Buscando el producto a agregar
+    // Buscando el producto a agregar
     const productoQueQuiereVer = productos.find(producto => producto.id === idProducto);
     // productoAgregado.cantidad = valorDeCantidad;
    
@@ -79,9 +83,10 @@ function generarCards(productosAMostrar){
                     <button onclick="agregarAlCarrito(${elementoDelArray.id})" class="btn btn-outline-dark mt-auto" href="#">
                     Agregar al carrito
                     </button>
-                    <button onclick="irAlProducto(${elementoDelArray.id})" class="btn btn-outline-dark mt-auto" href="#">
+
+                    <a onclick="irAlProducto(${elementoDelArray.id})" class="btn btn-outline-dark mt-auto" href="./pages/detalle.html">
                     Ver Producto
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -111,12 +116,6 @@ function tomarValor(){
     const input = document.getElementById("texto-prueba").value;
     console.log(input);
 }
-
-
-
-
-
-
 
 
 
