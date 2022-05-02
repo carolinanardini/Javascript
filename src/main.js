@@ -39,8 +39,6 @@ const agregarAlCarrito = (idProducto) => {
     generarCards(productos);
 };
 
-
-
 const irAlProducto = (idProducto) => {
   
     // Buscando el producto a agregar

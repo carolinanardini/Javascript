@@ -11,6 +11,13 @@ if(localStorage.getItem("carrito")==null){
 document.getElementById("cantidad-prod").innerHTML = carrito.length;
 //  VER COMO SUMAR LA CANTIDAD TOTAL DE PRODUCTOS AL CARRITO, NO SOLO UNO POR PRODUCTO
 
+// Eliminar del carrito
+function eliminarDelCarrito(elemento){
+    const indice= carrito.indexOf(elemento);
+    carrito.splice(indice,1);
+}
+
+
 
 generarCarrito();
 function generarCarrito(){
@@ -38,7 +45,7 @@ function generarCarrito(){
            <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                 <div class="text-center">
-                    <button onclick="agregarAlCarrito(${elemento.id})" class="btn btn-outline-dark mt-auto" href="#">
+                    <button onclick="eliminarDelCarrito(${elemento.id})" class="btn btn-outline-dark mt-auto" href="#">
                     Eliminar del carrito
                     </button>
                 </div>
@@ -53,3 +60,6 @@ function generarCarrito(){
 function mostrarCarritoEnElHTML(cards) {
     document.getElementById("listado-carrito").innerHTML = cards;
 };
+
+
+
