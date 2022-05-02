@@ -16,18 +16,18 @@
         <nav class="fondoRosa navbar">
             <ul class="navbar">
                 <a href="../index.html"><li class="fontAzulOsucro"> HOME</li></a>
-                <a href=""><li class="fontAzulOsucro"> NOSOTROS</li></a>
-                <a href=""><li class="fontAzulOsucro"> PRODUCTOS</li></a>
+                <a href="../pages/carrito.html"><li class="fontAzulOsucro"> CARRITO</li></a>
                <a href="iniciarsesion.html"><li class="fontAzulOsucro"> INICIAR SESION</li></a>
             </ul>
 
             <form class="d-flex marginRight">
                 <input class="marginRight" type="text" placeholder="Buscar" id="producto-buscado" oninput="buscarProducto()"> 
-                <button class="btn btn-outline-dark" type="submit">
+                <a href="../pages/carrito.html" class="btn btn-outline-dark">
+                    
                     <i class="bi-cart-fill me-1"></i>
                     Carrito
                     <span class="badge bg-dark text-white ms-1 sounded-pill" id="cantidad-prod">0</span>
-                </button>
+                </a>
             </form>
             
         </nav>
@@ -40,6 +40,7 @@
             </div>
         </section>
     </main>
+    <script src="../src/carritoLogica.js"></script>
     <script src="../src/detalle.js"></script>
 </body>
 </html>
