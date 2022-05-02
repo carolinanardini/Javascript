@@ -11,13 +11,27 @@ if(localStorage.getItem("carrito")==null){
 document.getElementById("cantidad-prod").innerHTML = carrito.length;
 //  VER COMO SUMAR LA CANTIDAD TOTAL DE PRODUCTOS AL CARRITO, NO SOLO UNO POR PRODUCTO
 
-// Eliminar del carrito
-function eliminarDelCarrito(elemento){
-    const indice= carrito.indexOf(elemento);
-    carrito.splice(indice,1);
-}
 
+const eliminarDelCarrito = (idProducto) => {
 
+    // Buscando el producto a eliminar
+        const productoEliminado = productos.find(producto => producto.id === idProducto);
+       
+    //  Actualizando el storage del carrito  
+        var nuevoCarrito=carrito.filter((item) => item.id !== productoEliminado);
+    
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    
+    // Actualizando el html
+        document.getElementById("cantidad-prod").innerHTML=carrito.length;
+    
+    
+    // Actualizar stock
+        productoEliminado.stock++;
+    
+        
+        generarCarrito(nuevoCarrito);
+    };
 
 generarCarrito();
 function generarCarrito(){
@@ -63,3 +77,5 @@ function mostrarCarritoEnElHTML(cards) {
 
 
 
+    
+    

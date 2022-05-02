@@ -126,8 +126,6 @@ function tomarValor(){
 
 
 
-
-
 // // DESAFIO 1
 // // let texto = prompt("Ingresa una palabra");
 // // let acumulador="";
