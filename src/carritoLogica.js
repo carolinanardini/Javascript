@@ -12,26 +12,11 @@ document.getElementById("cantidad-prod").innerHTML = carrito.length;
 //  VER COMO SUMAR LA CANTIDAD TOTAL DE PRODUCTOS AL CARRITO, NO SOLO UNO POR PRODUCTO
 
 
-const eliminarDelCarrito = (idProducto) => {
-
-    // Buscando el producto a eliminar
-        const productoEliminado = productos.find(producto => producto.id === idProducto);
-       
-    //  Actualizando el storage del carrito  
-        var nuevoCarrito=carrito.filter((item) => item.id !== productoEliminado);
-    
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-    
-    // Actualizando el html
-        document.getElementById("cantidad-prod").innerHTML=carrito.length;
-    
-    
-    // Actualizar stock
-        productoEliminado.stock++;
-    
-        
-        generarCarrito(nuevoCarrito);
-    };
+const eliminarDelCarrito = (id) => {
+    let carrito =JSON.parse(localStorage.getItem("carrito)"))
+    let nuevoCarrito =carrito.filter(e=>e.id!=id)
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+}   
 
 generarCarrito();
 function generarCarrito(){
