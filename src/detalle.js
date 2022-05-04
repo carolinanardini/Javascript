@@ -6,8 +6,8 @@ document.getElementById("cardContainer").innerHTML = `
         <div class="small mb-1">SKU: BST-498</div>
         <h1 class="display-5 fw-bolder">${productoAVer.titulo}</h1>
         <div class="fs-5 mb-5">
-            <span class="text-decoration-line-through">$45.00</span>
-            <span>$40.00</span>
+            <span class="text-decoration-line-through">$${productoAVer.precio}</span>
+            <span>${productoAVer.preciodescuento}</span>
         </div>
         <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
         <div class="d-flex">

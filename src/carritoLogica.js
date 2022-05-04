@@ -59,4 +59,19 @@ function mostrarCarritoEnElHTML(cards) {
 
 
     
+function eliminarDelCarrito (id){
+    let carrito =JSON.parse(localStorage.getItem("carrito"));
+    let nuevoCarrito =carrito.filter(e=>e.id!=id);
+    localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
+
+    const productoEliminado = carrito.find(producto => producto.id === id);
+
+    swal({
+        title: `Producto eliminado`,
+        text: `Eliminaste ${productoEliminado.titulo} del carrito`,
+        icon: `success`,
+        button: `Volver al carrito`,
+    });
     
+    generarCarrito(nuevoCarrito);
+}   
