@@ -12,11 +12,7 @@ document.getElementById("cantidad-prod").innerHTML = carrito.length;
 //  VER COMO SUMAR LA CANTIDAD TOTAL DE PRODUCTOS AL CARRITO, NO SOLO UNO POR PRODUCTO
 
 
-const eliminarDelCarrito = (id) => {
-    let carrito =JSON.parse(localStorage.getItem("carrito)"))
-    let nuevoCarrito =carrito.filter(e=>e.id!=id)
-    localStorage.setItem("carrito", JSON.stringify(carrito))
-}   
+
 
 generarCarrito();
 function generarCarrito(){
