@@ -117,7 +117,7 @@ function tomarValor(){
 
 
 function eliminarDelCarrito (id){
-    let carrito =JSON.parse(localStorage.getItem("carrito)"));
+    let carrito =JSON.parse(localStorage.getItem("carrito"));
     let nuevoCarrito =carrito.filter(e=>e.id!=id);
     localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
     
